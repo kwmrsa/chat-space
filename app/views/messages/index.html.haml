@@ -1,0 +1,60 @@
+%body
+  .wrapper
+    .side-bar
+      .bar-header
+        .bar-header__box
+          %p.bar-header__box__user-name
+            name
+          %ul.bar-header__box__menu 
+            %li.bar-header__box__new-group
+              = link_to "#" do
+                = icon('fas', 'edit')
+            %li.bar-header__box__edit-user
+              = link_to "#" do
+                = icon('fas', 'cog')
+      .side-groups
+        = link_to "#", class:"group"do
+          %p.group__group-name
+            abc
+          %p.group__latest-message
+            まだメッセージがありません
+    .chat-main
+      .main-chat-top
+        .main-chat-top__left-box
+          %h2.main-chat-top__left-box__current-group
+            グループ名
+          %ul.main-chat-top__left-box__member-list 
+            Member:
+            %li.main-chat-top__left-box__member-list__member
+              Member名
+        = link_to "#" do
+          .main-chat-top__edit-btn
+            Edit
+      .chat-main__chat-messages
+        .chat-message
+          .chat-message__top-info
+            %p.chat-message__top-info__talker 
+              name
+            %p.chat-message__top-info__data
+              2019/12/12
+          %p.chat-message__text
+            text
+        .chat-message
+          .chat-messge__top-info
+            %p.chat-message__top-info__talker
+              name2
+            %p.chat-message__top-info__data
+              2019/12/12
+          %p.chat-message__text
+            text2
+      .chat-form
+        %chat-form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/10482/messages", :enctype => "multipart/form-data", :method => "post"}
+          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+          %input{:name => "authenticity_token", :type => "hidden", :value => "NfS8YYNt7woklkNQoA26sFA2eJlPbwEHf3BRVtKlfEkj4FP0DGf2+yxwLYloOjO6bTkO+nFS83ScM0stjcV8LA=="}/
+          .input-box
+            %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+            %label.input-box__image{:for => "message_image"}
+              = icon('fas', 'image')
+
+              %input#message_image.input-box__image__file{:name => "message[image]", :type => "file"}/
+          %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
