@@ -48,13 +48,13 @@
           %p.chat-message__text
             text2
       .chat-form
-        %chat-form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/10482/messages", :enctype => "multipart/form-data", :method => "post"}
-          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-          %input{:name => "authenticity_token", :type => "hidden", :value => "NfS8YYNt7woklkNQoA26sFA2eJlPbwEHf3BRVtKlfEkj4FP0DGf2+yxwLYloOjO6bTkO+nFS83ScM0stjcV8LA=="}/
+        %chat-form#new_message.new_message{"accept-charset": "UTF-8", action: "/groups/10482/messages", enctype: "multipart/form-data", method: "post"}
+          %input{name: "utf8", type: "hidden", value: "✓"}/
+          %input{name: "authenticity_token", type: "hidden", value: "NfS8YYNt7woklkNQoA26sFA2eJlPbwEHf3BRVtKlfEkj4FP0DGf2+yxwLYloOjO6bTkO+nFS83ScM0stjcV8LA=="}/
           .input-box
-            %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-            %label.input-box__image{:for => "message_image"}
+            %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+            %label.input-box__image{for: "message_image"}
               = icon('fas', 'image')
 
-              %input#message_image.input-box__image__file{:name => "message[image]", :type => "file"}/
-          %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+              %input#message_image.input-box__image__file{name: "message[image]", type: "file"}/
+          %input.submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
