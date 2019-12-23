@@ -2,16 +2,17 @@
   .wrapper
     .side-bar
       .bar-header
+        %h3.header__name
+          = current_user.name
         .bar-header__box
           %p.bar-header__box__user-name
-            name
           %ul.bar-header__box__menu 
             %li.bar-header__box__new-group
               = link_to "#" do
                 = icon('fas', 'edit')
             %li.bar-header__box__edit-user
-              = link_to "#" do
-                = icon('fas', 'cog')
+              = link_to edit_user_path(current_user) do
+                = icon('fas', 'cog', class: 'icon')
       .side-groups
         = link_to "#", class:"group"do
           %p.group__group-name
