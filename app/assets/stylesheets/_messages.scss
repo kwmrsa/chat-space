@@ -79,6 +79,8 @@
           border-bottom: 1px solid #eee;
           display: flex;
           justify-content: space-between;
+          position: relative;
+          overflow: scroll;
           &__left-box{
               margin-top: 35px;
               &__current-group{
@@ -113,6 +115,7 @@
           padding: 35px 40px;
           height: calc(100vh - 190px);
           background-color: #fafafa;
+          overflow: scroll;
           .chat-message {
               padding-bottom: 46px;
               &__top-info{
@@ -142,8 +145,10 @@
           background-color: #ddd;
           bottom: 0;
           position: fixed;
+          width: calc(100vw - 300px);
           .new_message {
               display: flex;
+              height: 50px;
               .input-box {
                   width: 100%;
                   position: relative;
