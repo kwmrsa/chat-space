@@ -140,6 +140,8 @@
           height: 90px;
           padding: 20px 40px;
           background-color: #ddd;
+          bottom: 0;
+          position: fixed;
           .new_message {
               display: flex;
               .input-box {
