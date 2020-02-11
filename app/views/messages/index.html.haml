@@ -17,10 +17,10 @@
         - current_user.groups.each do |group|
           .groups
             = link_to group_messages_path(group) do
-            .group__group-name
-              = group.name
-            .group__latest-message
-              メッセージはまだありません。
+              .group__group-name
+                = group.name
+              .group__latest-message
+                メッセージはまだありません。
     .chat-main
       .main-chat-top
         .main-chat-top__left-box
@@ -34,24 +34,13 @@
         = link_to edit_group_path(@group) do
           .main-chat-top__edit-btn
             edit
-      .chat-main__chat-messages
-        .chat-message
-          = render @messages
-          .chat-message__top-info
-            .chat-message__top-info__talker 
-              = message.user.name
-            .chat-message__top-info__data
-              = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-          .chat-message__text
-            - if message.content.present?
-              %p.chat-message__content
-                = message.content
-            = image_tag message.image.url, class: 'chat-message__image' if message.image.present?
+      .chat-message
+        = render partial: 'messages', collection: @messages
       .chat-form
         = form_for [@group, @message] do |f|
-          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-          .form__mask
-            = f.label :image, class: 'form__mask__image' do
-              = icon('fas', 'image', class: 'icon')
+          = f.text_field :content, class: 'form__new-message', placeholder: 'type a message'
+          .chat-form__input-box
+            = f.label :image, class: 'form__text__image' do
+              = fa_icon 'picture-o', class: 'icon'
               = f.file_field :image, class: 'hidden'
-          = f.submit 'Send', class: 'form__submit'
+          = f.submit value:'Send', class: 'form__submit-btn', "data-disable-with": false
