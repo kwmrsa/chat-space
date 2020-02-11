@@ -39,7 +39,7 @@ $(function(){
           return html;
         };
     }
-$('#new_message').on('submoit', function(e){
+$('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action')
@@ -53,11 +53,12 @@ $('#new_message').on('submoit', function(e){
     })
     .done(function(data){
         var html = buildHTML(data);
-        $('.messages').append(html);
-        $('#new_message.new_message')[0].reset();
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+        $(".chat-main_chat-messages").append(html);
+        $('chat-form_submit-btn').attr('disabled', false);
+        $('#new_message')[0].reset();
+        $('.chat-main_chat-messages').animate({scrollTop: $('.chat-message')[0].scrollHeight}, 'fast');
     })
-    .fail(function() {
+    .fail(function(data) {
         alert('エラーが発生しメッセージが送信できませんでした。');
     });
 })
